@@ -30,19 +30,22 @@ def should_bid(last_bid):
         _should_bid = False
     if(_price > float(config('MAX_PRICE'))):
         _should_bid = False
-        
+
     print("Last Bidder: {name}, Last Price: {price}, Should Bid: {should}".format(name=_name, price=_price, should=_should_bid))
     return _should_bid
 
 
 def start(browser):
     while True:
-        time.sleep(4)
-        auction_target = find_selected_elm(config('ITEM_TO_TRACK_NAME'), browser)
-        last_bid = find_last_bid(auction_target)
-        if should_bid(last_bid):
-            btn = auction_target.find_element(By.CLASS_NAME, 'btn-price')
-            btn.click()
+        try:
+            time.sleep(4)
+            auction_target = find_selected_elm(config('ITEM_TO_TRACK_NAME'), browser)
+            last_bid = find_last_bid(auction_target)
+            if should_bid(last_bid):
+                btn = auction_target.find_element(By.CLASS_NAME, 'btn-price')
+                btn.click()
+        except:
+            print("An exception occurred")
 
 
 fp = webdriver.FirefoxProfile(config('FIRE_FOX_PROFILE_PATH'))
