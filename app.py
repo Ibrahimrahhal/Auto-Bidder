@@ -14,8 +14,6 @@ def find_selected_elm(name, browser):
         if len(name_elm) > 0 and name in name_elm[0].text:
             return element
 
-
-
 def find_last_bid(auction_elm): 
     last_bid_elm = auction_elm.find_element(By.CSS_SELECTOR, ".auctioneers .body .row:first-child")
     last_bid_user_name = last_bid_elm.find_element(By.CLASS_NAME, "fb-user_name").text
