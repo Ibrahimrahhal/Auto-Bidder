@@ -6,7 +6,6 @@ import time
 
 
 
-
 def find_selected_elm(name, browser):
     elements = browser.find_elements(By.CLASS_NAME, "auction")
     for element in elements:
